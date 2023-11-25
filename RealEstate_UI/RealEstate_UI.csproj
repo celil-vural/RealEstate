@@ -11,4 +11,32 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Components\_DefaultFeatureComponentPartial\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Components\_DefaultHomePageProductList\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Components\_DefaultProductListExploreCitiesComponentPartial\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Components\_DefaultServicesComponentPartial\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Components\_DefaultWhoWeAreComponentPartial\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Components\_DefaultFeatureComponentPartial\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Components\_DefaultHomePageProductList\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Components\_DefaultWhoWeAreComponentPartial\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Components\_DefaultServicesComponentPartial\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Components\_DefaultProductListExploreCitiesComponentPartial\Default.cshtml" />
+  </ItemGroup>
+
 </Project>
