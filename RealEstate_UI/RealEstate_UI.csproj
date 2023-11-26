@@ -12,31 +12,65 @@
   </ItemGroup>
 
   <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\Components\_DefaultFeatureComponentPartial\Default.cshtml" />
+    <UpToDateCheckInput Remove="Views\Shared\Components\_DefaultFeatureComponentPartial\Default.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <_ContentIncludedByDefault Remove="Pages\Components\_DefaultHomePageProductList\Default.cshtml" />
-    <_ContentIncludedByDefault Remove="Pages\Components\_DefaultProductListExploreCitiesComponentPartial\Default.cshtml" />
-    <_ContentIncludedByDefault Remove="Pages\Components\_DefaultServicesComponentPartial\Default.cshtml" />
-    <_ContentIncludedByDefault Remove="Pages\Components\_DefaultWhoWeAreComponentPartial\Default.cshtml" />
-    <_ContentIncludedByDefault Remove="Pages\Components\_DefaultFeatureComponentPartial\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\_DefaultScriptComponentPartial\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\_DefaultBrandComponentPartial\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\_DefaultDiscountOfDayComponentPartial\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\_DefaultFooterComponentPartial\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\_DefaultSubFeatureComponentPartial\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\_DefaultHomePageProductList\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\_DefaultOurClientComponentPartial\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\_DefaultProductListExploreCitiesComponentPartial\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\_DefaultServicesComponentPartial\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\_DefaultWhoWeAreComponentPartial\Default.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\_DefaultFeatureComponentPartial\Default.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\Components\_DefaultHomePageProductList\Default.cshtml" />
+    <UpToDateCheckInput Remove="Views\Shared\Components\_DefaultHomePageProductList\Default.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\Components\_DefaultWhoWeAreComponentPartial\Default.cshtml" />
+    <UpToDateCheckInput Remove="Views\Shared\Components\_DefaultWhoWeAreComponentPartial\Default.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\Components\_DefaultServicesComponentPartial\Default.cshtml" />
+    <UpToDateCheckInput Remove="Views\Shared\Components\_DefaultServicesComponentPartial\Default.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <UpToDateCheckInput Remove="Pages\Components\_DefaultProductListExploreCitiesComponentPartial\Default.cshtml" />
+    <UpToDateCheckInput Remove="Views\Shared\Components\_DefaultProductListExploreCitiesComponentPartial\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Shared\Components\_DefaultOurClientComponentPartial\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Shared\Components\_DefaultSubFeatureComponentPartial\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Shared\Components\_DefaultDiscountOfDayComponentPartial\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Shared\Components\_DefaultBrandComponentPartial\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Shared\Components\_DefaultFooterComponentPartial\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Shared\Components\_DefaultScriptComponentPartial\Default.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\Components\" />
   </ItemGroup>
 
 </Project>

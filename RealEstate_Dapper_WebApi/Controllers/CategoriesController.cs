@@ -6,46 +6,40 @@ namespace RealEstate_Dapper_WebApi.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CategoriesController : ControllerBase
+    public class CategoriesController(ICategoryRepository repository) : ControllerBase
     {
-        private readonly ICategoryRepository _categoryRepository;
-
-        public CategoriesController(ICategoryRepository categoryRepository)
-        {
-            _categoryRepository = categoryRepository;
-        }
         [HttpGet("GetAllCategory")]
         public async Task<IActionResult> Index()
         {
-            var values = await _categoryRepository.GetAllCategoryAsync();
+            var values = await repository.GetAllCategoryAsync();
             return Ok(values);
         }
 
         [HttpPost("CreateCategory")]
-        public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryDto category)
+        public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryDto dto)
         {
-            _categoryRepository.CreateCategoryAsync(category);
+            repository.CreateCategoryAsync(dto);
             return Ok();
         }
 
         [HttpDelete("DeleteCategory/{id}")]
         public async Task<IActionResult> DeleteCategory([FromRoute] int id)
         {
-            _categoryRepository.DeleteCategoryAsync(id);
+            repository.DeleteCategoryAsync(id);
             return Ok();
         }
 
         [HttpPut("UpdateCategory")]
-        public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryDto category)
+        public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryDto dto)
         {
-            _categoryRepository.UpdateCategoryAsync(category);
+            repository.UpdateCategoryAsync(dto);
             return Ok();
         }
 
         [HttpGet("GetCategoryById/{id}")]
         public async Task<IActionResult> GetCategoryById([FromRoute] int id)
         {
-            var value = await _categoryRepository.GetCategoryByIdAsync(id);
+            var value = await repository.GetCategoryByIdAsync(id);
             return Ok(value);
         }
     }

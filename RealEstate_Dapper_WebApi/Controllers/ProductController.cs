@@ -6,56 +6,51 @@ namespace RealEstate_Dapper_WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductController(IProductRepository repository) : ControllerBase
     {
-        private readonly IProductRepository _productRepository;
-        public ProductController(IProductRepository productRepository)
-        {
-            this._productRepository = productRepository;
-        }
         [HttpGet("GetAllProduct")]
         public async Task<IActionResult> Index()
         {
-            var values = await _productRepository.GetAllProductAsync();
+            var values = await repository.GetAllProductAsync();
             return Ok(values);
         }
         [HttpGet("GetAllProductWithCategory")]
         public async Task<IActionResult> GetAllProductWithCategory()
         {
-            var values = await _productRepository.GetAllProductWithCategoryAsync();
+            var values = await repository.GetAllProductWithCategoryAsync();
             return Ok(values);
         }
         [HttpGet("GetProductWithCategoryById/{id}")]
         public async Task<IActionResult> GetProductWithCategoryById([FromRoute] int id)
         {
-            var values = await _productRepository.GetProductWithCategoryByIdAsync(id);
+            var values = await repository.GetProductWithCategoryByIdAsync(id);
             return Ok(values);
         }
         [HttpGet("GetProductById/{id}")]
         public async Task<IActionResult> GetProductById([FromRoute] int id)
         {
-            var values = await _productRepository.GetProductByIdAsync(id);
+            var values = await repository.GetProductByIdAsync(id);
             return Ok(values);
         }
 
         [HttpPost("CreateProduct")]
-        public IActionResult CreateProduct([FromBody] CreateProductDto createProductDto)
+        public IActionResult CreateProduct([FromBody] CreateProductDto dto)
         {
-            _productRepository.CreateProductAsync(createProductDto);
+            repository.CreateProductAsync(dto);
             return Ok();
         }
 
         [HttpPut("UpdateProduct")]
-        public IActionResult UpdateProduct([FromBody] UpdateProductDto updateProductDto)
+        public IActionResult UpdateProduct([FromBody] UpdateProductDto dto)
         {
-            _productRepository.UpdateProductAsync(updateProductDto);
+            repository.UpdateProductAsync(dto);
             return Ok();
         }
 
         [HttpDelete("DeleteProduct/{id}")]
         public IActionResult DeleteProduct([FromRoute] int id)
         {
-            _productRepository.DeleteProductAsync(id);
+            repository.DeleteProductAsync(id);
             return Ok();
         }
     }

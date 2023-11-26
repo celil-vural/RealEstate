@@ -2,11 +2,10 @@
 
 namespace RealEstate_UI.ViewComponents.HomePage
 {
-    public class _DefaultWhoWeAreComponentPartial : ViewComponent
+    public class _DefaultOurClientComponentPartial : ViewComponent
     {
         public IViewComponentResult Invoke()
         {
-            
             return View();
         }
     }
