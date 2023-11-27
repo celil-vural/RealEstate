@@ -1,14 +1,16 @@
 ﻿namespace RealEstate_Dapper_WebApi.Dtos.ProductDtos
 {
-    public record ResultProductWithCategoryDto
-    {
-        public int ProductID { get; init; }
-        public string Title { get; init; }
-        public string CoverImage { get; init; }
-        public string Address { get; init; }
-        public decimal Price { get; init; }
-        public string City { get; init; }
-        public string District { get; init; }
-        public string CategoryName { get; init; }
-    }
+    public record ResultProductWithCategoryDto(int ProductID,
+        string Title,
+        decimal Price,
+        string CoverImage,
+        string City,
+        string District,
+        string Address,
+        string Description,
+        string CategoryName,
+        int EmployeeID,
+        int ProductShowCaseID,
+        bool ProductStatus
+    );
 }
