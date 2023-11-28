@@ -19,8 +19,7 @@ namespace RealEstate_Dapper_WebApi.Repository.ProductRepository
 
         public async Task<ICollection<ResultProductWithCategoryDto>> GetAllProductWithCategoryAsync()
         {
-            string query = @"select ProductID,Title,Price,CoverImage,Address,City,District,
-       Description,CategoryName,EmployeeID,ProductShowCaseID,ProductStatus from Product p inner join Category c on p.ProductCategory = c.CategoryId";
+            string query = @"select ProductID,Title,Price,CoverImage,City,District,Address,Description,CategoryName=c.CategoryName,EmployeeID,ProductShowCaseTypeID,ProductStatus from Product p inner join Category c on p.ProductCategory = c.CategoryID";
             using (var connection = context.CreateConnection())
             {
                 var values =
@@ -32,7 +31,7 @@ namespace RealEstate_Dapper_WebApi.Repository.ProductRepository
         public async Task<ResultProductWithCategoryDto> GetProductWithCategoryByIdAsync(int id)
         {
             string query = @"select ProductID,Title,Price,CoverImage,Address,City,District,
-       Description,CategoryName,EmployeeID,ProductShowCaseID,ProductStatus from Product p inner join Category c on p.ProductCategory = c.CategoryId where ProductID = @id";
+       Description,CategoryName,EmployeeID,ProductShowCaseTypeID,ProductStatus from Product p inner join Category c on p.ProductCategory = c.CategoryId where ProductID = @id";
             using (var connection = context.CreateConnection())
             {
                 var values =
@@ -55,9 +54,9 @@ namespace RealEstate_Dapper_WebApi.Repository.ProductRepository
         public void CreateProductAsync(CreateProductDto createProductDto)
         {
             string query = @"insert into Product (Title,Price,CoverImage,City,District,Address,
-                     Description,ProductCategory,EmployeeID,ProductShowCaseID) values 
+                     Description,ProductCategory,EmployeeID,ProductShowCaseTypeID,ProductStatus) values 
                     (@Title,@Price,@CoverImage,@City,@District,@Address,@Description,@ProductCategory,@EmployeeID,
-                     @ProductShowCaseID)";
+                     @ProductShowCaseTypeID,1)";
             using (var connection = context.CreateConnection())
             {
                 connection.Execute(query, createProductDto);
@@ -68,7 +67,7 @@ namespace RealEstate_Dapper_WebApi.Repository.ProductRepository
         {
             string query = @"update Product set Title=@Title,Price=@Price,CoverImage=@CoverImage,City=@City,
 District=@District,Address=@Address,Description=@Description,ProductCategory=@ProductCategory,EmployeeID=@EmployeeID,
-ProductShowCaseID=@ProductShowCaseID where ProductID = @ProductID";
+ProductShowCaseTypeID=@ProductShowCaseTypeID where ProductID = @ProductID";
             using (var connection = context.CreateConnection())
             {
                 connection.Execute(query, updateProductDto);

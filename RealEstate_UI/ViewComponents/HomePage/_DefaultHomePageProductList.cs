@@ -10,12 +10,13 @@ namespace RealEstate_UI.ViewComponents.HomePage
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var client = httpClientFactory.CreateClient();
-            var url = Constants.baseUrl+"api/Product/GetAllProductWithCategoryName";
+            var url = Constants.baseUrl+"api/Product/GetAllProductWithCategory";
             var response = await client.GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
                 var json = await response.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(json);
+                Console.WriteLine(values);
                 return View(values);
             }
             return View();

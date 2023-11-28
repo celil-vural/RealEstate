@@ -10,7 +10,7 @@
         string Description,
         int ProductCategory,
         int EmployeeID,
-        int ProductShowCaseID,
+        short ProductShowCaseTypeID,
         bool ProductStatus
     );
 }

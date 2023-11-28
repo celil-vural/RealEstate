@@ -1,6 +1,7 @@
 ﻿namespace RealEstate_Dapper_WebApi.Dtos.ProductDtos
 {
-    public record ResultProductWithCategoryDto(int ProductID,
+    public record ResultProductWithCategoryDto(
+        int ProductID,
         string Title,
         decimal Price,
         string CoverImage,
@@ -8,9 +9,12 @@
         string District,
         string Address,
         string Description,
-        string CategoryName,
         int EmployeeID,
-        int ProductShowCaseID,
-        bool ProductStatus
-    );
+        short ProductShowCaseTypeID,
+        bool ProductStatus,
+        string CategoryName
+    )
+    {
+        ResultProductWithCategoryDto() : this(0, "", 0, "", "", "", "", "", 0, 0, false, "") { }
+    };
 }
