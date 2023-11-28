@@ -1,6 +1,7 @@
 ﻿using RealEstate_Dapper_WebApi.Model.DapperContext;
 using RealEstate_Dapper_WebApi.Repository.CategoryRepository;
 using RealEstate_Dapper_WebApi.Repository.ProductRepository;
+using RealEstate_Dapper_WebApi.Repository.ServicesRepository;
 using RealEstate_Dapper_WebApi.Repository.WhoWeAreRepository;
 
 namespace RealEstate_Dapper_WebApi.Utilities.Extensions.BuilderExtensions
@@ -20,6 +21,7 @@ namespace RealEstate_Dapper_WebApi.Utilities.Extensions.BuilderExtensions
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IWhoWeAreDetailRepository, WhoWeAreDetailRepository>();
+            services.AddTransient<IServicesRepository, ServicesRepository>();
         }
     }
 }

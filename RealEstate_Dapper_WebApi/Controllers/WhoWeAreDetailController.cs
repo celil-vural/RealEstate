@@ -8,35 +8,35 @@ namespace RealEstate_Dapper_WebApi.Controllers;
 [Route("api/[controller]")]
 public class WhoWeAreDetailController(IWhoWeAreDetailRepository detailRepository):ControllerBase
 {
-    [HttpGet("GetAllWhoWeAreDetail")]
+    [HttpGet]
     public async Task<IActionResult> Index()
     {
         var values = await detailRepository.GetAllWhoWeAreDetail();
         return Ok(values);
     }
 
-    [HttpPost("CreateWhoWeAreDetail")]
+    [HttpPost]
     public async Task<IActionResult> CreateWhoWeAreDetail([FromBody] CreateWhoWeAreDto dto)
     {
         detailRepository.CreateWhoWeAreDetailAsync(dto);
         return Ok();
     }
 
-    [HttpDelete("DeleteWhoWeAreDetail/{id}")]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteWhoWeAreDetail([FromRoute] int id)
     {
         detailRepository.DeleteWhoWeAreDetailAsync(id);
         return Ok();
     }
 
-    [HttpPut("UpdateWhoWeAreDetail")]
+    [HttpPut]
     public async Task<IActionResult> UpdateWhoWeAreDetail([FromBody] UpdateWhoWeAreDto dto)
     {
         detailRepository.UpdateWhoWeAreDetailAsync(dto);
         return Ok();
     }
 
-    [HttpGet("GetWhoWeAreDetailById/{id}")]
+    [HttpGet("{id}")] 
     public async Task<IActionResult> GetWhoWeAreDetailById([FromRoute] int id)
     {
         var value = await detailRepository.GetWhoWeAreDetailByIdAsync(id);

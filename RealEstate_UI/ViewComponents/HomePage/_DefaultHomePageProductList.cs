@@ -16,7 +16,6 @@ namespace RealEstate_UI.ViewComponents.HomePage
             {
                 var json = await response.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(json);
-                Console.WriteLine(values);
                 return View(values);
             }
             return View();
