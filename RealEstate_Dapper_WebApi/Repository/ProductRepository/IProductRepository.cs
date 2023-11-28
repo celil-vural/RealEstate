@@ -5,8 +5,8 @@ namespace RealEstate_Dapper_WebApi.Repository.ProductRepository
     public interface IProductRepository
     {
         Task<ICollection<ResultProductDto>> GetAllProductAsync();
-        Task<ICollection<ResultProductWithCategoryDto>> GetAllProductWithCategoryAsync();
-        Task<ResultProductWithCategoryDto> GetProductWithCategoryByIdAsync(int id);
+        Task<ICollection<ResultProductWithDetailsDto>> GetAllProductWithDetailsAsync();
+        Task<ResultProductWithDetailsDto> GetProductWithDetailsByIdAsync(int id);
         Task<ResultProductDto> GetProductByIdAsync(int id);
         void CreateProductAsync(CreateProductDto createProductDto);
         void UpdateProductAsync(UpdateProductDto updateProductDto);

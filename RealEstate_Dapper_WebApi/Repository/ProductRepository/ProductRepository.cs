@@ -17,25 +17,31 @@ namespace RealEstate_Dapper_WebApi.Repository.ProductRepository
             }
         }
 
-        public async Task<ICollection<ResultProductWithCategoryDto>> GetAllProductWithCategoryAsync()
+        public async Task<ICollection<ResultProductWithDetailsDto>> GetAllProductWithDetailsAsync()
         {
-            string query = @"select ProductID,Title,Price,CoverImage,City,District,Address,Description,CategoryName=c.CategoryName,EmployeeID,ProductShowCaseTypeID,ProductStatus from Product p inner join Category c on p.ProductCategory = c.CategoryID";
+            string query = @"select ProductID,Title,Price,CoverImage,City,District,Address,
+       Description,CategoryName=c.CategoryName,EmployeeID,ProductShowCaseTypeName=sct.ProductShowCaseTypeName,
+       ProductStatus from Product p inner join Category c on p.ProductCategory = c.CategoryID
+       inner join ProductShowCaseType sct on p.ProductShowCaseTypeID = sct.ProductShowCaseTypeID";
             using (var connection = context.CreateConnection())
             {
                 var values =
-                    await connection.QueryAsync<ResultProductWithCategoryDto>(query);
+                    await connection.QueryAsync<ResultProductWithDetailsDto>(query);
                 return values.ToHashSet();
             }
         }
 
-        public async Task<ResultProductWithCategoryDto> GetProductWithCategoryByIdAsync(int id)
+        public async Task<ResultProductWithDetailsDto> GetProductWithDetailsByIdAsync(int id)
         {
-            string query = @"select ProductID,Title,Price,CoverImage,Address,City,District,
-       Description,CategoryName,EmployeeID,ProductShowCaseTypeID,ProductStatus from Product p inner join Category c on p.ProductCategory = c.CategoryId where ProductID = @id";
+            string query = @"select ProductID,Title,Price,CoverImage,City,District,Address,
+       Description,CategoryName=c.CategoryName,EmployeeID,ProductShowCaseTypeName=sct.ProductShowCaseTypeName,
+       ProductStatus from Product p inner join Category c on p.ProductCategory = c.CategoryID
+       inner join ProductShowCaseType sct on p.ProductShowCaseTypeID = sct.ProductShowCaseTypeID
+                     where ProductID = @id";
             using (var connection = context.CreateConnection())
             {
                 var values =
-                    await connection.QueryFirstOrDefaultAsync<ResultProductWithCategoryDto>(query, new { id });
+                    await connection.QueryFirstOrDefaultAsync<ResultProductWithDetailsDto>(query, new { id });
                 return values;
             }
         }

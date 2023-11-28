@@ -6,5 +6,6 @@ public static class Urls
     public static readonly String BottomGridUrl = baseUrl + "api/BottomGrid";
     public static readonly String WhoWeAreUrl = baseUrl + "api/WhoWeAreDetail";
     public static readonly String ServicesUrl = baseUrl + "api/Services";
+    public static readonly String ProductWithDetailsUrl = baseUrl + "api/Product/GetAllProductWithDetails";
     
 }
