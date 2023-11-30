@@ -1,6 +1,7 @@
 ﻿using RealEstate_Dapper_WebApi.Model.DapperContext;
 using RealEstate_Dapper_WebApi.Repository.BottomGridRepository;
 using RealEstate_Dapper_WebApi.Repository.CategoryRepository;
+using RealEstate_Dapper_WebApi.Repository.ContactRepository;
 using RealEstate_Dapper_WebApi.Repository.PopularLocationRepository;
 using RealEstate_Dapper_WebApi.Repository.ProductRepository;
 using RealEstate_Dapper_WebApi.Repository.ServicesRepository;
@@ -28,6 +29,7 @@ namespace RealEstate_Dapper_WebApi.Utilities.Extensions.BuilderExtensions
             services.AddTransient<IBottomGridRepository, BottomGridRepository>();
             services.AddTransient<IPopularLocationRepository,PopularLocationRepository>();
             services.AddTransient<ITestimonialRepsitory,TestimonialRepsitory>();
+            services.AddTransient<IContactRepository, ContactRepository>();
         }
     }
 }
