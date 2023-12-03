@@ -28,7 +28,7 @@ VALUES (@Title, @Icon, @Content)";
         using var connection = context.CreateConnection();
         await connection.ExecuteAsync(query, new { Id = id });
     }
-
+    
     public async void UpdateContactAddressAsync(UpdateContactAddressDto dto)
     {
         var query = @"UPDATE ContactAddress SET Title = @Title, 

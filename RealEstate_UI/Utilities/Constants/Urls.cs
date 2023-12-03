@@ -9,5 +9,5 @@ public static class Urls
     public static readonly String PopularLocationUrl = baseUrl + "api/PopularLocation";
     public static readonly String TestimonialUrl = baseUrl + "api/Testimonial";
     public static readonly String ProductWithDetailsUrl = baseUrl + "api/Product/GetAllProductWithDetails";
-    
+    public static readonly string CategoryUrl = baseUrl + "api/Categories";
 }
