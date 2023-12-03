@@ -1,9 +1,9 @@
 ﻿namespace RealEstate_Dapper_WebApi.Dtos.CategoryDtos
 {
-    public class UpdateCategoryDto
+    public record UpdateCategoryDto(int CategoryId, string CategoryName, bool CategoryStatus)
     {
-        public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
-        public bool CategoryStatus { get; set; }
+        private UpdateCategoryDto() : this(default, default, default)
+        {
+        }
     }
 }

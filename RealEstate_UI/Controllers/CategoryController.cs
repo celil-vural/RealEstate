@@ -38,4 +38,39 @@ public class CategoryController(IHttpClientFactory factory) : Controller
         if (response.IsSuccessStatusCode) return RedirectToAction("Index");
         return View(dto);
     }
+
+    public async Task<IActionResult> DeleteCategory(int id)
+    {
+        var client = factory.CreateClient();
+        var response = await client.DeleteAsync($"{Urls.CategoryUrl}/{id}");
+        if (response.IsSuccessStatusCode) return RedirectToAction("Index");
+        return RedirectToAction("Index");
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> UpdateCategory(int id)
+    {
+        var client = factory.CreateClient();
+        var response = await client.GetAsync($"{Urls.CategoryUrl}/{id}");
+        if (response.IsSuccessStatusCode)
+        {
+            var jsonData = await response.Content.ReadAsStringAsync();
+            var category = JsonConvert.DeserializeObject<UpdateCategoryDto>(jsonData);
+            return View(category);
+        }
+
+        return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> UpdateCategory(UpdateCategoryDto dto)
+    {
+        Console.WriteLine(dto.CategoryStatus);
+        var client = factory.CreateClient();
+        var jsonData = JsonConvert.SerializeObject(dto);
+        var stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+        var response = await client.PutAsync(Urls.CategoryUrl, stringContent);
+        if (response.IsSuccessStatusCode) return RedirectToAction("Index");
+        return View(dto);
+    }
 }

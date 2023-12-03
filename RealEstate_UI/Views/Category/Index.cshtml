@@ -38,13 +38,10 @@
                                     }
                                 </td>
                                 <td>
-                                    <a href="#" class="btn btn-outline-danger">Sil</a>
+                                    <a asp-action="DeleteCategory" asp-route-id="@item.CategoryId" class="btn btn-outline-danger">Sil</a>
                                 </td>
                                 <td>
-                                    <a href="#" class="btn btn-outline-success">Güncelle</a>
-                                </td>
-                                <td>
-                                    <a href="#" class="btn btn-outline-danger"></a>
+                                    <a asp-action="UpdateCategory" asp-route-id="@item.CategoryId" class="btn btn-outline-success">Güncelle</a>
                                 </td>
                             </tr>
                         }
