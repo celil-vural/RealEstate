@@ -1,0 +1,3 @@
+namespace RealEstate_Dapper_WebApi.Dtos.ProductShowCaseTypeDtos;
+
+public record CreateProductShowCaseTypeDto(string ProductShowCaseTypeName);
