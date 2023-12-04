@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using RealEstate_UI.Dtos.Products;
+using RealEstate_UI.Dtos.ProductDtos;
 using RealEstate_UI.Utilities.Const;
 
 namespace RealEstate_UI.ViewComponents.HomePage

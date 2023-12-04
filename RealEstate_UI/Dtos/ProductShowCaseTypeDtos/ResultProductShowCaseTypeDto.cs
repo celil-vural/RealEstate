@@ -1,0 +1,3 @@
+namespace RealEstate_UI.Dtos.ProductShowCaseTypeDtos;
+
+public record ResultProductShowCaseTypeDto(short ProductShowCaseTypeID, string ProductShowCaseTypeName);

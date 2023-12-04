@@ -1,4 +1,4 @@
-﻿namespace RealEstate_UI.Dtos.Products;
+﻿namespace RealEstate_UI.Dtos.ProductDtos;
 
 public record ResultProductWithDetails(
     int ProductID,

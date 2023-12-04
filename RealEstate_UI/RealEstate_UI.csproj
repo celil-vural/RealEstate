@@ -69,8 +69,4 @@
     <UpToDateCheckInput Remove="Views\Shared\Components\_DefaultScriptComponentPartial\Default.cshtml" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Pages\Components\" />
-  </ItemGroup>
-
 </Project>
