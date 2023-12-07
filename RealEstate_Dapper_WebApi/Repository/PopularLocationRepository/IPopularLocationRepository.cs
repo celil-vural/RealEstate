@@ -1,4 +1,5 @@
-﻿using RealEstate_Dapper_WebApi.Dtos.PopularLocationDtos;
+﻿using Entity.Dtos.PopularLocationDtos;
+
 namespace RealEstate_Dapper_WebApi.Repository.PopularLocationRepository;
 public interface IPopularLocationRepository
 {

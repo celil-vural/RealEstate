@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Entity.Dtos.BottomGridDtos;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using RealEstate_UI.Dtos.BottomGridDtos;
 using RealEstate_UI.Utilities.Const;
 
 namespace RealEstate_UI.ViewComponents.HomePage

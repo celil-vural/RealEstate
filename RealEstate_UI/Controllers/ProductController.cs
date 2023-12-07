@@ -1,9 +1,9 @@
+using Entity.Dtos.CategoryDtos;
+using Entity.Dtos.ProductDtos;
+using Entity.Dtos.ProductShowCaseTypeDtos;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
-using RealEstate_UI.Dtos.CategoryDtos;
-using RealEstate_UI.Dtos.ProductDtos;
-using RealEstate_UI.Dtos.ProductShowCaseTypeDtos;
 using RealEstate_UI.Utilities.Const;
 
 namespace RealEstate_UI.Controllers;
@@ -17,7 +17,7 @@ public class ProductController(IHttpClientFactory factory) : Controller
         if (response.IsSuccessStatusCode)
         {
             var jsonData = await response.Content.ReadAsStringAsync();
-            var products = JsonConvert.DeserializeObject<List<ResultProductWithDetails>>(jsonData);
+            var products = JsonConvert.DeserializeObject<List<ResultProductWithDetailsDto>>(jsonData);
             return View(products);
         }
 
@@ -62,6 +62,8 @@ public class ProductController(IHttpClientFactory factory) : Controller
     [HttpPost]
     public async Task<IActionResult> CreateProduct([FromForm] CreateProductDto dto)
     {
+        var client = factory.CreateClient();
+        var response = await client.PostAsJsonAsync(Urls.ProductUrl, dto);
         return View();
     }
 }

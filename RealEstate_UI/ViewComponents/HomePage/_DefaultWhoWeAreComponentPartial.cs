@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Entity.Dtos.ServicesDtos;
+using Entity.Dtos.WhoWeAreDtos;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using RealEstate_UI.Dtos.ServiceDtos;
-using RealEstate_UI.Dtos.WhoWeAreDto;
 using RealEstate_UI.Models.WhoWeAreDetailModels;
 using RealEstate_UI.Utilities.Const;
 

@@ -1,5 +1,5 @@
 ﻿using Dapper;
-using RealEstate_Dapper_WebApi.Dtos.ProductDtos;
+using Entity.Dtos.ProductDtos;
 using RealEstate_Dapper_WebApi.Model.DapperContext;
 
 namespace RealEstate_Dapper_WebApi.Repository.ProductRepository

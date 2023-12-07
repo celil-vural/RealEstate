@@ -1,4 +1,4 @@
-using RealEstate_Dapper_WebApi.Dtos.ProductShowCaseTypeDtos;
+using Entity.Dtos.ProductShowCaseTypeDtos;
 
 namespace RealEstate_Dapper_WebApi.Repository.ProductShowCaseTypeRepository;
 

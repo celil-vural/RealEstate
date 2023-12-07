@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using RealEstate_Dapper_WebApi.Dtos.PopularLocationDtos;
+﻿using Entity.Dtos.PopularLocationDtos;
+using Microsoft.AspNetCore.Mvc;
 using RealEstate_Dapper_WebApi.Repository.PopularLocationRepository;
 
 namespace RealEstate_Dapper_WebApi.Controllers;

@@ -1,5 +1,5 @@
 using Dapper;
-using RealEstate_Dapper_WebApi.Dtos.ProductShowCaseTypeDtos;
+using Entity.Dtos.ProductShowCaseTypeDtos;
 using RealEstate_Dapper_WebApi.Model.DapperContext;
 
 namespace RealEstate_Dapper_WebApi.Repository.ProductShowCaseTypeRepository;

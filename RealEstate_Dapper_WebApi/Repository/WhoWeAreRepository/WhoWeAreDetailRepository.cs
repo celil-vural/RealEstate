@@ -1,6 +1,7 @@
 ﻿using Dapper;
-using RealEstate_Dapper_WebApi.Dtos.WhoWeAreDtos;
+using Entity.Dtos.WhoWeAreDtos;
 using RealEstate_Dapper_WebApi.Model.DapperContext;
+
 namespace RealEstate_Dapper_WebApi.Repository.WhoWeAreRepository;
 public class WhoWeAreDetailRepository(DapperContext context) : IWhoWeAreDetailRepository
 {

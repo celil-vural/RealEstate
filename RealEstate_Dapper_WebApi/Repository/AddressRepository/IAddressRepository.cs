@@ -1,4 +1,4 @@
-using RealEstate_Dapper_WebApi.Dtos.AddressDtos;
+using Entity.Dtos.AddressDtos;
 
 namespace RealEstate_Dapper_WebApi.Repository.AddressRepository;
 

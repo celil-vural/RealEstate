@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Entity.Dtos.ProductDtos;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using RealEstate_UI.Dtos.ProductDtos;
 using RealEstate_UI.Utilities.Const;
 
 namespace RealEstate_UI.ViewComponents.HomePage
@@ -14,7 +14,7 @@ namespace RealEstate_UI.ViewComponents.HomePage
             if (response.IsSuccessStatusCode)
             {
                 var json = await response.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResultProductWithDetails>>(json);
+                var values = JsonConvert.DeserializeObject<List<ResultProductWithDetailsDto>>(json);
                 return View(values);
             }
             return View();

@@ -1,5 +1,5 @@
+using Entity.Dtos.ProductShowCaseTypeDtos;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate_Dapper_WebApi.Dtos.ProductShowCaseTypeDtos;
 using RealEstate_Dapper_WebApi.Repository.ProductShowCaseTypeRepository;
 
 namespace RealEstate_Dapper_WebApi.Controllers;

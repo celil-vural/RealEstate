@@ -1,4 +1,4 @@
-﻿using RealEstate_Dapper_WebApi.Dtos.CategoryDtos;
+﻿using Entity.Dtos.CategoryDtos;
 
 namespace RealEstate_Dapper_WebApi.Repository.CategoryRepository
 {

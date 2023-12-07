@@ -1,7 +1,7 @@
 using System.Text;
+using Entity.Dtos.CategoryDtos;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using RealEstate_UI.Dtos.CategoryDtos;
 using RealEstate_UI.Utilities.Const;
 
 namespace RealEstate_UI.Controllers;

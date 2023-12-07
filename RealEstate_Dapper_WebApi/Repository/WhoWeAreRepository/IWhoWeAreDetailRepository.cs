@@ -1,4 +1,4 @@
-﻿using RealEstate_Dapper_WebApi.Dtos.WhoWeAreDtos;
+﻿using Entity.Dtos.WhoWeAreDtos;
 
 namespace RealEstate_Dapper_WebApi.Repository.WhoWeAreRepository;
 

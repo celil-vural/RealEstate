@@ -1,4 +1,4 @@
-using RealEstate_Dapper_WebApi.Dtos.ContactAddressDtos;
+using Entity.Dtos.ContactAddressDtos;
 
 namespace RealEstate_Dapper_WebApi.Repository.ContactAddressRepository;
 

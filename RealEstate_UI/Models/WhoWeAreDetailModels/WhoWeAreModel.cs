@@ -1,5 +1,5 @@
-﻿using RealEstate_UI.Dtos.ServiceDtos;
-using RealEstate_UI.Dtos.WhoWeAreDto;
+﻿using Entity.Dtos.ServicesDtos;
+using Entity.Dtos.WhoWeAreDtos;
 
 namespace RealEstate_UI.Models.WhoWeAreDetailModels;
 

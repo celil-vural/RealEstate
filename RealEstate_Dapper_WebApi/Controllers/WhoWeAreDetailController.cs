@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using RealEstate_Dapper_WebApi.Dtos.CategoryDtos;
-using RealEstate_Dapper_WebApi.Dtos.WhoWeAreDtos;
+﻿using Entity.Dtos.WhoWeAreDtos;
+using Microsoft.AspNetCore.Mvc;
 using RealEstate_Dapper_WebApi.Repository.WhoWeAreRepository;
 
 namespace RealEstate_Dapper_WebApi.Controllers;

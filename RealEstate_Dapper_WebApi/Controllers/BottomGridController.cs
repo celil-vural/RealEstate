@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using RealEstate_Dapper_WebApi.Dtos.BottomGridDtos;
+﻿using Entity.Dtos.BottomGridDtos;
+using Microsoft.AspNetCore.Mvc;
 using RealEstate_Dapper_WebApi.Repository.BottomGridRepository;
 
 namespace RealEstate_Dapper_WebApi.Controllers;

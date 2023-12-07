@@ -1,4 +1,4 @@
-@model ICollection<ResultProductWithDetails>
+@model ICollection<ResultProductWithDetailsDto>
 
 @{
     Layout = "~/Views/Admin/Index.cshtml";
@@ -26,7 +26,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach (var item in Model ?? new List<ResultProductWithDetails>())
+                        @foreach (var item in Model ?? new List<ResultProductWithDetailsDto>())
                         {
                             <tr>
                                 <th scope="row">@item.ProductID</th>

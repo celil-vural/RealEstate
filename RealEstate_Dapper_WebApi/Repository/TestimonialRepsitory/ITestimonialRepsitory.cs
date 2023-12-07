@@ -1,4 +1,4 @@
-using RealEstate_Dapper_WebApi.Dtos.TestimonialDtos;
+using Entity.Dtos.TestimonialDtos;
 
 namespace RealEstate_Dapper_WebApi.Repository.TestimonialRepsitory;
 

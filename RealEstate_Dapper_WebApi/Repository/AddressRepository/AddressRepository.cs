@@ -1,5 +1,5 @@
 using Dapper;
-using RealEstate_Dapper_WebApi.Dtos.AddressDtos;
+using Entity.Dtos.AddressDtos;
 using RealEstate_Dapper_WebApi.Model.DapperContext;
 
 namespace RealEstate_Dapper_WebApi.Repository.AddressRepository;

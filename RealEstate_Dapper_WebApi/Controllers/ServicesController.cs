@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using RealEstate_Dapper_WebApi.Dtos.ServicesDtos;
+﻿using Entity.Dtos.ServicesDtos;
+using Microsoft.AspNetCore.Mvc;
 using RealEstate_Dapper_WebApi.Repository.ServicesRepository;
 
 namespace RealEstate_Dapper_WebApi.Controllers;
