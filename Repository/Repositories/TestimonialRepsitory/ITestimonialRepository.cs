@@ -1,6 +1,6 @@
 using Entity.Dtos.TestimonialDtos;
 
-namespace RealEstate_Dapper_WebApi.Repository.TestimonialRepository;
+namespace Repository.Repositories.TestimonialRepository;
 
 public interface
     ITestimonialRepository : IBaseRepository<ResultTestimonialDto, CreateTestimonialDto, UpdateTestimonialDto>;

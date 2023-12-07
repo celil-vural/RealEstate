@@ -1,7 +1,7 @@
 using Entity.Dtos.ProductShowCaseTypeDtos;
-using RealEstate_Dapper_WebApi.Model.DapperContext;
+using Repository.Repositories.Dapper;
 
-namespace RealEstate_Dapper_WebApi.Repository.ProductShowCaseTypeRepository;
+namespace Repository.Repositories.ProductShowCaseTypeRepository;
 
 public class ProductShowCaseTypeRepository(DapperContext context)
     : BaseRepository<ResultProductShowCaseTypeDto>(context), IProductShowCaseTypeRepository

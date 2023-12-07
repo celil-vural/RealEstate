@@ -1,7 +1,7 @@
 ﻿using Entity.Dtos.WhoWeAreDtos;
-using RealEstate_Dapper_WebApi.Model.DapperContext;
+using Repository.Repositories.Dapper;
 
-namespace RealEstate_Dapper_WebApi.Repository.WhoWeAreRepository;
+namespace Repository.Repositories.WhoWeAreRepository;
 
 public class WhoWeAreDetailRepository(DapperContext context)
     : BaseRepository<ResultWhoWeAreDto>(context), IWhoWeAreDetailRepository

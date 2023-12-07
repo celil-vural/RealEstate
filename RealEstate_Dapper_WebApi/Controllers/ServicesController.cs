@@ -1,12 +1,12 @@
 ﻿using Entity.Dtos.ServicesDtos;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate_Dapper_WebApi.Repository.ServicesRepository;
+using Repository.Repositories.ServicesRepository;
 
 namespace RealEstate_Dapper_WebApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ServicesController(IServicesRepository repository): ControllerBase
+public class ServicesController(IServicesRepository repository) : ControllerBase
 {
     [HttpGet]
     public async Task<IActionResult> GetAllServices()

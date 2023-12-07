@@ -1,6 +1,6 @@
 using Entity.Dtos.AddressDtos;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate_Dapper_WebApi.Repository.AddressRepository;
+using Repository.Repositories.AddressRepository;
 
 namespace RealEstate_Dapper_WebApi.Controllers;
 

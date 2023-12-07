@@ -1,6 +1,6 @@
 using Entity.Dtos.ProductShowCaseTypeDtos;
 
-namespace RealEstate_Dapper_WebApi.Repository.ProductShowCaseTypeRepository;
+namespace Repository.Repositories.ProductShowCaseTypeRepository;
 
 public interface IProductShowCaseTypeRepository : IBaseRepository<ResultProductShowCaseTypeDto,
     CreateProductShowCaseTypeDto, UpdateProductShowCaseTypeDto>;

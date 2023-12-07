@@ -1,6 +1,6 @@
 ﻿using Entity.Dtos.CategoryDtos;
 
-namespace RealEstate_Dapper_WebApi.Repository.CategoryRepository
+namespace Repository.Repositories.CategoryRepository
 {
     public interface ICategoryRepository : IBaseRepository<ResultCategoryDto, CreateCategoryDto, UpdateCategoryDto>;
 }

@@ -1,5 +1,5 @@
 using Entity.Dtos.AddressDtos;
 
-namespace RealEstate_Dapper_WebApi.Repository.AddressRepository;
+namespace Repository.Repositories.AddressRepository;
 
 public interface IAddressRepository : IBaseRepository<ResultAddressDto, CreateAddressDto, UpdateAddressDto>;

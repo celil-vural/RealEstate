@@ -1,11 +1,11 @@
 ﻿using Entity.Dtos.WhoWeAreDtos;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate_Dapper_WebApi.Repository.WhoWeAreRepository;
+using Repository.Repositories.WhoWeAreRepository;
 
 namespace RealEstate_Dapper_WebApi.Controllers;
 [ApiController]
 [Route("api/[controller]")]
-public class WhoWeAreDetailController(IWhoWeAreDetailRepository detailRepository):ControllerBase
+public class WhoWeAreDetailController(IWhoWeAreDetailRepository detailRepository) : ControllerBase
 {
     [HttpGet]
     public async Task<IActionResult> Index()
@@ -35,7 +35,7 @@ public class WhoWeAreDetailController(IWhoWeAreDetailRepository detailRepository
         return Ok();
     }
 
-    [HttpGet("{id:int}")] 
+    [HttpGet("{id:int}")]
     public async Task<IActionResult> GetWhoWeAreDetailById([FromRoute] int id)
     {
         var value = await detailRepository.GetByIdAsync(id);

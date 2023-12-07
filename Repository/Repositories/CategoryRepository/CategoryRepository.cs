@@ -1,7 +1,7 @@
 ﻿using Entity.Dtos.CategoryDtos;
-using RealEstate_Dapper_WebApi.Model.DapperContext;
+using Repository.Repositories.Dapper;
 
-namespace RealEstate_Dapper_WebApi.Repository.CategoryRepository
+namespace Repository.Repositories.CategoryRepository
 {
     public class CategoryRepository(DapperContext context)
         : BaseRepository<ResultCategoryDto>(context), ICategoryRepository

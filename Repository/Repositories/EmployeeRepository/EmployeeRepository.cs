@@ -1,7 +1,7 @@
 using Entity.Dtos.EmployeeDtos;
-using RealEstate_Dapper_WebApi.Model.DapperContext;
+using Repository.Repositories.Dapper;
 
-namespace RealEstate_Dapper_WebApi.Repository.EmployeeRepository;
+namespace Repository.Repositories.EmployeeRepository;
 
 public class EmployeeRepository(DapperContext context) : BaseRepository<ResultEmployeeDto>(context), IEmployeeRepository
 {

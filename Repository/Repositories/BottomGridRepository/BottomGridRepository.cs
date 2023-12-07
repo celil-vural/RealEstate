@@ -1,7 +1,7 @@
 ﻿using Entity.Dtos.BottomGridDtos;
-using RealEstate_Dapper_WebApi.Model.DapperContext;
+using Repository.Repositories.Dapper;
 
-namespace RealEstate_Dapper_WebApi.Repository.BottomGridRepository;
+namespace Repository.Repositories.BottomGridRepository;
 
 public class BottomGridRepository(DapperContext context)
     : BaseRepository<ResultBottomGridDto>(context), IBottomGridRepository

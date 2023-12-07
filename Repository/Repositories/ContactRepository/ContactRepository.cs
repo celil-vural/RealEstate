@@ -1,7 +1,7 @@
 using Entity.Dtos.ContactDtos;
-using RealEstate_Dapper_WebApi.Model.DapperContext;
+using Repository.Repositories.Dapper;
 
-namespace RealEstate_Dapper_WebApi.Repository.ContactRepository;
+namespace Repository.Repositories.ContactRepository;
 
 public class ContactRepository(DapperContext context) : BaseRepository<ResultContactDto>(context), IContactRepository
 {

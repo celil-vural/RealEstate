@@ -1,6 +1,6 @@
 using Entity.Dtos.EmployeeDtos;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate_Dapper_WebApi.Repository.EmployeeRepository;
+using Repository.Repositories.EmployeeRepository;
 
 namespace RealEstate_Dapper_WebApi.Controllers;
 

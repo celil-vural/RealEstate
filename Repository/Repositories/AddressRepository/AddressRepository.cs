@@ -1,7 +1,8 @@
 using Entity.Dtos.AddressDtos;
-using RealEstate_Dapper_WebApi.Model.DapperContext;
+using Repository.Repositories.AddressRepository;
+using Repository.Repositories.Dapper;
 
-namespace RealEstate_Dapper_WebApi.Repository.AddressRepository;
+namespace Repository.Repositories.Repository.AddressRepository;
 
 public class AddressRepository(DapperContext context) : BaseRepository<ResultAddressDto>(context), IAddressRepository
 {

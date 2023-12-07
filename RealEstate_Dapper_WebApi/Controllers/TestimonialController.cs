@@ -1,6 +1,6 @@
 using Entity.Dtos.TestimonialDtos;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate_Dapper_WebApi.Repository.TestimonialRepository;
+using Repository.Repositories.TestimonialRepository;
 
 namespace RealEstate_Dapper_WebApi.Controllers;
 

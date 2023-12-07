@@ -1,7 +1,7 @@
 ﻿using Entity.Dtos.PopularLocationDtos;
-using RealEstate_Dapper_WebApi.Model.DapperContext;
+using Repository.Repositories.Dapper;
 
-namespace RealEstate_Dapper_WebApi.Repository.PopularLocationRepository;
+namespace Repository.Repositories.PopularLocationRepository;
 
 public class PopularLocationRepository(DapperContext context)
     : BaseRepository<ResultPopularLocationDto>(context), IPopularLocationRepository

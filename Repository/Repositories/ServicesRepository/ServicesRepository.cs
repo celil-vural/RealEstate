@@ -1,7 +1,7 @@
 ﻿using Entity.Dtos.ServicesDtos;
-using RealEstate_Dapper_WebApi.Model.DapperContext;
+using Repository.Repositories.Dapper;
 
-namespace RealEstate_Dapper_WebApi.Repository.ServicesRepository;
+namespace Repository.Repositories.ServicesRepository;
 
 public class ServicesRepository(DapperContext context) : BaseRepository<ResultServicesDto>(context), IServicesRepository
 {

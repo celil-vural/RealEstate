@@ -1,11 +1,11 @@
 ﻿using Entity.Dtos.PopularLocationDtos;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate_Dapper_WebApi.Repository.PopularLocationRepository;
+using Repository.Repositories.PopularLocationRepository;
 
 namespace RealEstate_Dapper_WebApi.Controllers;
 [ApiController]
 [Route("api/[controller]")]
-public class PopularLocationController(IPopularLocationRepository repository):ControllerBase
+public class PopularLocationController(IPopularLocationRepository repository) : ControllerBase
 {
     [HttpGet]
     public async Task<IActionResult> GetPopularLocations()

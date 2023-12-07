@@ -1,6 +1,6 @@
 ﻿using Entity.Dtos.ProductDtos;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate_Dapper_WebApi.Repository.ProductRepository;
+using Repository.Repositories.ProductRepository;
 
 namespace RealEstate_Dapper_WebApi.Controllers
 {

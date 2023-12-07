@@ -1,17 +1,18 @@
-﻿using RealEstate_Dapper_WebApi.Model.DapperContext;
-using RealEstate_Dapper_WebApi.Repository.AddressRepository;
-using RealEstate_Dapper_WebApi.Repository.BottomGridRepository;
-using RealEstate_Dapper_WebApi.Repository.CategoryRepository;
-using RealEstate_Dapper_WebApi.Repository.ContactAddressRepository;
-using RealEstate_Dapper_WebApi.Repository.ContactRepository;
-using RealEstate_Dapper_WebApi.Repository.EmployeeRepository;
-using RealEstate_Dapper_WebApi.Repository.PopularLocationRepository;
-using RealEstate_Dapper_WebApi.Repository.ProductRepository;
-using RealEstate_Dapper_WebApi.Repository.ProductShowCaseTypeRepository;
-using RealEstate_Dapper_WebApi.Repository.ServicesRepository;
-using RealEstate_Dapper_WebApi.Repository.TestimonialRepository;
-using RealEstate_Dapper_WebApi.Repository.TestimonialRepsitory;
-using RealEstate_Dapper_WebApi.Repository.WhoWeAreRepository;
+﻿using Repository.Repositories.AddressRepository;
+using Repository.Repositories.BottomGridRepository;
+using Repository.Repositories.CategoryRepository;
+using Repository.Repositories.ContactAddressRepository;
+using Repository.Repositories.ContactRepository;
+using Repository.Repositories.Dapper;
+using Repository.Repositories.EmployeeRepository;
+using Repository.Repositories.PopularLocationRepository;
+using Repository.Repositories.ProductRepository;
+using Repository.Repositories.ProductShowCaseTypeRepository;
+using Repository.Repositories.Repository.AddressRepository;
+using Repository.Repositories.ServicesRepository;
+using Repository.Repositories.TestimonialRepository;
+using Repository.Repositories.TestimonialRepsitory;
+using Repository.Repositories.WhoWeAreRepository;
 
 namespace RealEstate_Dapper_WebApi.Utilities.Extensions.BuilderExtensions
 {
@@ -32,7 +33,7 @@ namespace RealEstate_Dapper_WebApi.Utilities.Extensions.BuilderExtensions
             services.AddTransient<IWhoWeAreDetailRepository, WhoWeAreDetailRepository>();
             services.AddTransient<IServicesRepository, ServicesRepository>();
             services.AddTransient<IBottomGridRepository, BottomGridRepository>();
-            services.AddTransient<IPopularLocationRepository,PopularLocationRepository>();
+            services.AddTransient<IPopularLocationRepository, PopularLocationRepository>();
             services.AddTransient<ITestimonialRepository, TestimonialRepository>();
             services.AddTransient<IContactRepository, ContactRepository>();
             services.AddTransient<IAddressRepository, AddressRepository>();

@@ -1,6 +1,6 @@
 ﻿using Entity.Dtos.CategoryDtos;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate_Dapper_WebApi.Repository.CategoryRepository;
+using Repository.Repositories.CategoryRepository;
 
 namespace RealEstate_Dapper_WebApi.Controllers
 {

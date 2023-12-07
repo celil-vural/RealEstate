@@ -1,8 +1,8 @@
 using Entity.Dtos.TestimonialDtos;
-using RealEstate_Dapper_WebApi.Model.DapperContext;
-using RealEstate_Dapper_WebApi.Repository.TestimonialRepository;
+using Repository.Repositories.Dapper;
+using Repository.Repositories.TestimonialRepository;
 
-namespace RealEstate_Dapper_WebApi.Repository.TestimonialRepsitory;
+namespace Repository.Repositories.TestimonialRepsitory;
 
 public class TestimonialRepository(DapperContext context)
     : BaseRepository<ResultTestimonialDto>(context), ITestimonialRepository

@@ -1,6 +1,6 @@
 using Entity.Dtos.ContactDtos;
 using Microsoft.AspNetCore.Mvc;
-using RealEstate_Dapper_WebApi.Repository.ContactRepository;
+using Repository.Repositories.ContactRepository;
 
 namespace RealEstate_Dapper_WebApi.Controllers;
 

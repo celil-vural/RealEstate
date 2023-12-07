@@ -1,4 +1,4 @@
-namespace RealEstate_Dapper_WebApi.Repository;
+namespace Repository.Repositories;
 
 public interface IBaseRepository<TResultDto, in TCreateDto, in TUpdateDto>
 {

@@ -1,7 +1,7 @@
 ﻿using Entity.Dtos.ProductDtos;
-using RealEstate_Dapper_WebApi.Model.DapperContext;
+using Repository.Repositories.Dapper;
 
-namespace RealEstate_Dapper_WebApi.Repository.ProductRepository
+namespace Repository.Repositories.ProductRepository
 {
     public class ProductRepository(DapperContext context)
         : BaseRepository<ResultProductDto>(context), IProductRepository

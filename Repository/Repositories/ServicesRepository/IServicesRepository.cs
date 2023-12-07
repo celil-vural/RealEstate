@@ -1,5 +1,5 @@
 ﻿using Entity.Dtos.ServicesDtos;
 
-namespace RealEstate_Dapper_WebApi.Repository.ServicesRepository;
+namespace Repository.Repositories.ServicesRepository;
 
 public interface IServicesRepository : IBaseRepository<ResultServicesDto, CreateServiceDto, UpdateServiceDto>;

@@ -1,7 +1,7 @@
 using Dapper;
-using RealEstate_Dapper_WebApi.Model.DapperContext;
+using Repository.Repositories.Dapper;
 
-namespace RealEstate_Dapper_WebApi.Repository;
+namespace Repository.Repositories;
 
 public abstract class BaseRepository<TResultDto>(DapperContext context)
 {
