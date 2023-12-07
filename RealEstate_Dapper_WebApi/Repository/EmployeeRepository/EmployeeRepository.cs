@@ -38,11 +38,11 @@ public class EmployeeRepository(DapperContext context) : IEmployeeRepository
         await connection.ExecuteAsync(query, dto);
     }
 
-    public Task<ResultEmployeeDto> GetEmployeeByIdAsync(int id)
+    public async Task<ResultEmployeeDto> GetEmployeeByIdAsync(int id)
     {
         var query = @"SELECT * FROM Employee WHERE EmployeeID=@id";
         using var connection = context.CreateConnection();
-        var result = connection.QueryFirstOrDefaultAsync<ResultEmployeeDto>(query, new { id });
+        var result = await connection.QueryFirstOrDefaultAsync<ResultEmployeeDto>(query, new { id });
         return result;
     }
 }
