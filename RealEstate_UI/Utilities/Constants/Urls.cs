@@ -12,4 +12,5 @@ public static class Urls
     public static readonly string CategoryUrl = baseUrl + "api/Categories";
     public static readonly string ProductShowCaseTypeUrl = baseUrl + "api/ProductShowCaseType";
     public static readonly string ProductUrl = baseUrl + "api/Product";
+    public static readonly string EmployeeUrl = baseUrl + "api/Employee";
 }
