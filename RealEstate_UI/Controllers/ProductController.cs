@@ -64,6 +64,7 @@ public class ProductController(IHttpClientFactory factory) : Controller
     {
         var client = factory.CreateClient();
         var response = await client.PostAsJsonAsync(Urls.ProductUrl, dto);
+        
         return View();
     }
 }
