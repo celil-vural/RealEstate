@@ -10,35 +10,35 @@ public class WhoWeAreDetailController(IWhoWeAreDetailRepository detailRepository
     [HttpGet]
     public async Task<IActionResult> Index()
     {
-        var values = await detailRepository.GetAllWhoWeAreDetail();
+        var values = await detailRepository.GetAllAsync();
         return Ok(values);
     }
 
     [HttpPost]
     public async Task<IActionResult> CreateWhoWeAreDetail([FromBody] CreateWhoWeAreDto dto)
     {
-        detailRepository.CreateWhoWeAreDetailAsync(dto);
+        detailRepository.CreateAsync(dto);
         return Ok();
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteWhoWeAreDetail([FromRoute] int id)
     {
-        detailRepository.DeleteWhoWeAreDetailAsync(id);
+        detailRepository.DeleteAsync(id);
         return Ok();
     }
 
     [HttpPut]
     public async Task<IActionResult> UpdateWhoWeAreDetail([FromBody] UpdateWhoWeAreDto dto)
     {
-        detailRepository.UpdateWhoWeAreDetailAsync(dto);
+        detailRepository.UpdateAsync(dto);
         return Ok();
     }
 
-    [HttpGet("{id}")] 
+    [HttpGet("{id:int}")] 
     public async Task<IActionResult> GetWhoWeAreDetailById([FromRoute] int id)
     {
-        var value = await detailRepository.GetWhoWeAreDetailByIdAsync(id);
+        var value = await detailRepository.GetByIdAsync(id);
         return Ok(value);
     }
 }

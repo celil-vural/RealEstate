@@ -11,35 +11,35 @@ namespace RealEstate_Dapper_WebApi.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var values = await repository.GetAllCategoryAsync();
+            var values = await repository.GetAllAsync();
             return Ok(values);
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryDto dto)
         {
-            repository.CreateCategoryAsync(dto);
+            repository.CreateAsync(dto);
             return Ok();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteCategory([FromRoute] int id)
         {
-            repository.DeleteCategoryAsync(id);
+            repository.DeleteAsync(id);
             return Ok();
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateCategory([FromBody] UpdateCategoryDto dto)
         {
-            repository.UpdateCategoryAsync(dto);
+            repository.UpdateAsync(dto);
             return Ok();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetCategoryById([FromRoute] int id)
         {
-            var value = await repository.GetCategoryByIdAsync(id);
+            var value = await repository.GetByIdAsync(id);
             return Ok(value);
         }
     }

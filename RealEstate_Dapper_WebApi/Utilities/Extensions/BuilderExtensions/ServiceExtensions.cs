@@ -9,6 +9,7 @@ using RealEstate_Dapper_WebApi.Repository.PopularLocationRepository;
 using RealEstate_Dapper_WebApi.Repository.ProductRepository;
 using RealEstate_Dapper_WebApi.Repository.ProductShowCaseTypeRepository;
 using RealEstate_Dapper_WebApi.Repository.ServicesRepository;
+using RealEstate_Dapper_WebApi.Repository.TestimonialRepository;
 using RealEstate_Dapper_WebApi.Repository.TestimonialRepsitory;
 using RealEstate_Dapper_WebApi.Repository.WhoWeAreRepository;
 
@@ -32,12 +33,12 @@ namespace RealEstate_Dapper_WebApi.Utilities.Extensions.BuilderExtensions
             services.AddTransient<IServicesRepository, ServicesRepository>();
             services.AddTransient<IBottomGridRepository, BottomGridRepository>();
             services.AddTransient<IPopularLocationRepository,PopularLocationRepository>();
-            services.AddTransient<ITestimonialRepsitory,TestimonialRepsitory>();
+            services.AddTransient<ITestimonialRepository, TestimonialRepository>();
             services.AddTransient<IContactRepository, ContactRepository>();
             services.AddTransient<IAddressRepository, AddressRepository>();
             services.AddTransient<IContactAddressRepository, ContactAddressRepository>();
             services.AddTransient<IEmployeeRepository, EmployeeRepository>();
-            services.AddTransient<IProductShowCaseTypeReposiyory, ProductShowCaseTypeReposiyory>();
+            services.AddTransient<IProductShowCaseTypeRepository, ProductShowCaseTypeRepository>();
         }
     }
 }

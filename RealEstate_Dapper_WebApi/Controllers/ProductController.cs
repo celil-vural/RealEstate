@@ -11,7 +11,7 @@ namespace RealEstate_Dapper_WebApi.Controllers
         [HttpGet("GetAllProduct")]
         public async Task<IActionResult> Index()
         {
-            var values = await repository.GetAllProductAsync();
+            var values = await repository.GetAllAsync();
             return Ok(values);
         }
         [HttpGet("GetAllProductWithDetails")]
@@ -20,37 +20,39 @@ namespace RealEstate_Dapper_WebApi.Controllers
             var values = await repository.GetAllProductWithDetailsAsync();
             return Ok(values);
         }
-        [HttpGet("GetProductWithDetailsById/{id}")]
+
+        [HttpGet("GetProductWithDetailsById/{id:int}")]
         public async Task<IActionResult> GetProductWithDetailsById([FromRoute] int id)
         {
             var values = await repository.GetProductWithDetailsByIdAsync(id);
             return Ok(values);
         }
-        [HttpGet("GetProductById/{id}")]
+
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetProductById([FromRoute] int id)
         {
-            var values = await repository.GetProductByIdAsync(id);
+            var values = await repository.GetByIdAsync(id);
             return Ok(values);
         }
 
         [HttpPost]
         public IActionResult CreateProduct([FromBody] CreateProductDto dto)
         {
-            repository.CreateProductAsync(dto);
+            repository.CreateAsync(dto);
             return Ok();
         }
 
         [HttpPut]
         public IActionResult UpdateProduct([FromBody] UpdateProductDto dto)
         {
-            repository.UpdateProductAsync(dto);
+            repository.UpdateAsync(dto);
             return Ok();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:int}")]
         public IActionResult DeleteProduct([FromRoute] int id)
         {
-            repository.DeleteProductAsync(id);
+            repository.DeleteAsync(id);
             return Ok();
         }
     }

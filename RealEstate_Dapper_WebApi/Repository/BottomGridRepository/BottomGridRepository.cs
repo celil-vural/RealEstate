@@ -1,46 +1,44 @@
-﻿using Dapper;
-using Entity.Dtos.BottomGridDtos;
+﻿using Entity.Dtos.BottomGridDtos;
 using RealEstate_Dapper_WebApi.Model.DapperContext;
 
 namespace RealEstate_Dapper_WebApi.Repository.BottomGridRepository;
 
-public class BottomGridRepository(DapperContext context): IBottomGridRepository
+public class BottomGridRepository(DapperContext context)
+    : BaseRepository<ResultBottomGridDto>(context), IBottomGridRepository
 {
-    public async Task<ICollection<ResultBottomGridDto>> GetAllBottomGridDetail()
+    public Task<ICollection<ResultBottomGridDto>> GetAllAsync()
     {
-        string query = @"SELECT * FROM BottomGrid";
-        using var connection = context.CreateConnection();
-        var result = await connection.QueryAsync<ResultBottomGridDto>(query);
-        return result.ToHashSet();
+        const string query = "SELECT * FROM BottomGrid";
+        return base.GetAllAsync(query);
     }
 
-    public Task<ResultBottomGridDto> GetBottomGridDetailByIdAsync(int id)
+    public Task<ResultBottomGridDto> GetByIdAsync(int id)
     {
-        string query = @"SELECT * FROM BottomGrid WHERE BottomGridID = @id";
-        using var connection = context.CreateConnection();
-        var result = connection.QueryFirstOrDefaultAsync<ResultBottomGridDto>(query, new {id});
-        return result;
+        const string query = "SELECT * FROM BottomGrid WHERE BottomGridID = @id";
+        return GetAsync(query, new { id });
     }
 
-    public void CreateBottomGridDetailAsync(CreateBottomGridDto dto)
+    public void CreateAsync(CreateBottomGridDto dto)
     {
-        string query = @"INSERT INTO BottomGrid (Title, Icon, Description) 
-        VALUES (@Title, @Icon, @Description)";
-        using var connection = context.CreateConnection();
-        connection.ExecuteAsync(query, dto);
+        const string query = """
+                             INSERT INTO BottomGrid (Title, Icon, Description)
+                                     VALUES (@Title, @Icon, @Description)
+                             """;
+        ExecuteAsync(query, dto);
     }
 
-    public void UpdateBottomGridDetailAsync(UpdateBottomGridDto dto)
+    public void UpdateAsync(UpdateBottomGridDto dto)
     {
-        string query = @"UPDATE BottomGrid SET Title = @Title,
-                          Icon = @Icon, Description = @Description WHERE BottomGridID = @BottomGridID";
-        using var connection = context.CreateConnection();
-        connection.ExecuteAsync(query, dto);
+        const string query = """
+                             UPDATE BottomGrid SET Title = @Title,
+                                                       Icon = @Icon, Description = @Description WHERE BottomGridID = @BottomGridID
+                             """;
+        ExecuteAsync(query, dto);
     }
-    public void DeleteBottomGridDetailAsync(int id)
+
+    public void DeleteAsync(int id)
     {
-        string query = @"DELETE FROM BottomGrid WHERE BottomGridID = @id";
-        using var connection = context.CreateConnection();
-        connection.ExecuteAsync(query, new {id});
+        const string query = "DELETE FROM BottomGrid WHERE BottomGridID = @id";
+        ExecuteAsync(query, new { id });
     }
 }

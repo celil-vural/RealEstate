@@ -1,11 +1,6 @@
 ﻿using Entity.Dtos.PopularLocationDtos;
 
 namespace RealEstate_Dapper_WebApi.Repository.PopularLocationRepository;
-public interface IPopularLocationRepository
-{
-    Task<ICollection<ResultPopularLocationDto>> GetAllPopularLocationDetailAsync();
-    Task<ResultPopularLocationDto> GetPopularLocationDetailByIdAsync(int id);
-    void CreatePopularLocationDetailAsync(CreatePopularLocationDto dto);
-    void UpdatePopularLocationDetailAsync(UpdatePopularLocationDto dto);
-    void DeletePopularLocationDetailAsync(int id);
-}
+
+public interface IPopularLocationRepository : IBaseRepository<ResultPopularLocationDto, CreatePopularLocationDto,
+    UpdatePopularLocationDto>;

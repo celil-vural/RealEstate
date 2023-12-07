@@ -11,14 +11,14 @@ public class EmployeeController(IEmployeeRepository repository) : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllEmployees()
     {
-        var employees = await repository.GetAllEmployeeAsync();
+        var employees = await repository.GetAllAsync();
         return Ok(employees);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id:int}")]
     public async Task<IActionResult> GetEmployeeById([FromRoute] int id)
     {
-        var employee = await repository.GetEmployeeByIdAsync(id);
+        var employee = await repository.GetByIdAsync(id);
         if (employee is null) return NotFound();
         return Ok(employee);
     }
@@ -27,7 +27,7 @@ public class EmployeeController(IEmployeeRepository repository) : ControllerBase
     public async Task<IActionResult> CreateEmployee([FromBody] CreateEmployeeDto employeeDto)
     {
         if (!ModelState.IsValid) return BadRequest(ModelState);
-        repository.CreateEmployeeAsync(employeeDto);
+        repository.CreateAsync(employeeDto);
         //return CreatedAtAction(nameof(GetEmployeeById), new { id = employeeDto.EmployeeID }, employeeDto);
         return Created();
     }
@@ -36,18 +36,18 @@ public class EmployeeController(IEmployeeRepository repository) : ControllerBase
     public async Task<IActionResult> UpdateEmployee([FromBody] UpdateEmployeeDto employeeDto)
     {
         if (!ModelState.IsValid) return BadRequest(ModelState);
-        var employee = await repository.GetEmployeeByIdAsync(employeeDto.EmployeeID);
+        var employee = await repository.GetByIdAsync(employeeDto.EmployeeID);
         if (employee is null) return NotFound();
-        repository.UpdateEmployeeAsync(employeeDto);
+        repository.UpdateAsync(employeeDto);
         return NoContent();
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeleteEmployee([FromRoute] int id)
     {
-        var employee = await repository.GetEmployeeByIdAsync(id);
+        var employee = await repository.GetByIdAsync(id);
         if (employee is null) return NotFound();
-        repository.DeleteEmployeeAsync(id);
+        repository.DeleteAsync(id);
         return NoContent();
     }
 }

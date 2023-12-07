@@ -1,46 +1,40 @@
-using Dapper;
 using Entity.Dtos.ContactDtos;
 using RealEstate_Dapper_WebApi.Model.DapperContext;
 
 namespace RealEstate_Dapper_WebApi.Repository.ContactRepository;
 
-public class ContactRepository(DapperContext context) : IContactRepository
+public class ContactRepository(DapperContext context) : BaseRepository<ResultContactDto>(context), IContactRepository
 {
-    public async Task<ICollection<ResultContactDto>> GetAllContactAsync()
+    public Task<ICollection<ResultContactDto>> GetAllAsync()
     {
-        var query = @"SELECT * FROM Contact";
-        using var connection = context.CreateConnection();
-        var result = await connection.QueryAsync<ResultContactDto>(query);
-        return result.ToHashSet();
+        const string query = "SELECT * FROM Contact";
+        return base.GetAllAsync(query);
     }
 
-    public async void CreateContactAsync(CreateContactDto dto)
+    public void CreateAsync(CreateContactDto dto)
     {
-        var query = @"INSERT INTO Contact (Name, Subject, Email, Message)
-VALUES (@Name, @Subject, @Email, @Message)";
-        using var connection = context.CreateConnection();
-        await connection.ExecuteAsync(query, dto);
+        const string query = """
+                             INSERT INTO Contact (Name, Subject, Email, Message)
+                             VALUES (@Name, @Subject, @Email, @Message)
+                             """;
+        ExecuteAsync(query, dto);
     }
 
-    public void DeleteContactAsync(int id)
+    public void DeleteAsync(int id)
     {
-        var query = @"DELETE FROM Contact WHERE ContactId = @id";
-        using var connection = context.CreateConnection();
-        connection.Execute(query, new { id });
+        const string query = "DELETE FROM Contact WHERE ContactId = @id";
+        ExecuteAsync(query, new { id });
     }
 
-    public async void UpdateContactAsync(UpdateContactDto dto)
+    public void UpdateAsync(UpdateContactDto dto)
     {
-        var query = @"UPDATE Contact SET Seen = @Seen, SeenDate = @SeenDate WHERE ContactId = @ContactId";
-        using var connection = context.CreateConnection();
-        await connection.ExecuteAsync(query, dto);
+        const string query = "UPDATE Contact SET Seen = @Seen, SeenDate = @SeenDate WHERE ContactId = @ContactId";
+        ExecuteAsync(query, dto);
     }
 
-    public async Task<ResultContactDto> GetContactByIdAsync(int id)
+    public Task<ResultContactDto> GetByIdAsync(int id)
     {
-        var query = @"SELECT * FROM Contact WHERE ContactId = @id";
-        using var connection = context.CreateConnection();
-        var result = await connection.QueryFirstOrDefaultAsync<ResultContactDto>(query, new { id });
-        return result;
+        const string query = "SELECT * FROM Contact WHERE ContactId = @id";
+        return GetAsync(query, new { id });
     }
 }

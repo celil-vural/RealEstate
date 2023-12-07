@@ -11,35 +11,35 @@ public class ContactController(IContactRepository repository) : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAllContacts()
     {
-        var contacts = await repository.GetAllContactAsync();
+        var contacts = await repository.GetAllAsync();
         return Ok(contacts);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id:int}")]
     public async Task<IActionResult> GetContactById([FromRoute] int id)
     {
-        var contact = await repository.GetContactByIdAsync(id);
+        var contact = await repository.GetByIdAsync(id);
         return Ok(contact);
     }
 
     [HttpPost]
     public async Task<IActionResult> CreateContact([FromForm] CreateContactDto dto)
     {
-        repository.CreateContactAsync(dto);
+        repository.CreateAsync(dto);
         return Created();
     }
 
     [HttpPut]
     public async Task<IActionResult> UpdateContact([FromForm] UpdateContactDto dto)
     {
-        repository.UpdateContactAsync(dto);
+        repository.UpdateAsync(dto);
         return NoContent();
     }
 
-    [HttpDelete("{id}")]
+    [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeleteContact([FromRoute] int id)
     {
-        repository.DeleteContactAsync(id);
+        repository.DeleteAsync(id);
         return NoContent();
     }
 }

@@ -1,48 +1,41 @@
-using Dapper;
 using Entity.Dtos.EmployeeDtos;
 using RealEstate_Dapper_WebApi.Model.DapperContext;
 
 namespace RealEstate_Dapper_WebApi.Repository.EmployeeRepository;
 
-public class EmployeeRepository(DapperContext context) : IEmployeeRepository
+public class EmployeeRepository(DapperContext context) : BaseRepository<ResultEmployeeDto>(context), IEmployeeRepository
 {
-    public async Task<ICollection<ResultEmployeeDto>> GetAllEmployeeAsync()
+    public Task<ICollection<ResultEmployeeDto>> GetAllAsync()
     {
-        var query = @"SELECT * FROM Employee";
-        using var connection = context.CreateConnection();
-        var result = await connection.QueryAsync<ResultEmployeeDto>(query);
-        return result.ToHashSet();
+        const string query = "SELECT * FROM Employee";
+        return base.GetAllAsync(query);
     }
 
-    public async void CreateEmployeeAsync(CreateEmployeeDto dto)
+    public void CreateAsync(CreateEmployeeDto dto)
     {
-        var query =
-            @"INSERT INTO Employee (Name,Surname,Email,EmployeePassword,Phone,ImageUrl) VALUES (@Name,@Surname,@Email,@EmployeePassword,@Phone,@ImageUrl)";
-        using var connection = context.CreateConnection();
-        await connection.ExecuteAsync(query, dto);
+        const string query =
+            "INSERT INTO Employee (Name,Surname,Email,EmployeePassword,Phone,ImageUrl) VALUES (@Name,@Surname,@Email,@EmployeePassword,@Phone,@ImageUrl)";
+        ExecuteAsync(query, dto);
     }
 
-    public async void DeleteEmployeeAsync(int id)
+    public void DeleteAsync(int id)
     {
-        var query = @"DELETE FROM Employee WHERE EmployeeID=@id";
-        using var connection = context.CreateConnection();
-        await connection.ExecuteAsync(query, new { id });
+        const string query = "DELETE FROM Employee WHERE EmployeeID=@id";
+        ExecuteAsync(query, new { id });
     }
 
-    public async void UpdateEmployeeAsync(UpdateEmployeeDto dto)
+    public void UpdateAsync(UpdateEmployeeDto dto)
     {
-        var query =
-            @"UPDATE Employee SET Name=@Name,Surname=@Surname,Email=@Email,EmployeePassword=@EmployeePassword,Phone=@Phone,ImageUrl=@ImageUrl 
-                WHERE EmployeeID=@EmployeeID";
-        using var connection = context.CreateConnection();
-        await connection.ExecuteAsync(query, dto);
+        const string query = """
+                             UPDATE Employee SET Name=@Name,Surname=@Surname,Email=@Email,EmployeePassword=@EmployeePassword,Phone=@Phone,ImageUrl=@ImageUrl
+                                             WHERE EmployeeID=@EmployeeID
+                             """;
+        ExecuteAsync(query, dto);
     }
 
-    public async Task<ResultEmployeeDto> GetEmployeeByIdAsync(int id)
+    public Task<ResultEmployeeDto> GetByIdAsync(int id)
     {
-        var query = @"SELECT * FROM Employee WHERE EmployeeID=@id";
-        using var connection = context.CreateConnection();
-        var result = await connection.QueryFirstOrDefaultAsync<ResultEmployeeDto>(query, new { id });
-        return result;
+        const string query = "SELECT * FROM Employee WHERE EmployeeID=@id";
+        return GetAsync(query, new { id });
     }
 }

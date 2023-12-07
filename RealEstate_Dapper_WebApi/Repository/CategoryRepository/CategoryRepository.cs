@@ -1,68 +1,40 @@
-﻿using Dapper;
-using Entity.Dtos.CategoryDtos;
+﻿using Entity.Dtos.CategoryDtos;
 using RealEstate_Dapper_WebApi.Model.DapperContext;
 
 namespace RealEstate_Dapper_WebApi.Repository.CategoryRepository
 {
-    public class CategoryRepository(DapperContext context) : ICategoryRepository
+    public class CategoryRepository(DapperContext context)
+        : BaseRepository<ResultCategoryDto>(context), ICategoryRepository
     {
-        public async Task<ICollection<ResultCategoryDto>> GetAllCategoryAsync()
+        public Task<ICollection<ResultCategoryDto>> GetAllAsync()
         {
-            string query = "select * from Category";
-            using (var connection = context.CreateConnection())
-            {
-                var values =
-                    await connection.QueryAsync<ResultCategoryDto>(query);
-                return values.ToHashSet();
-            }
+            const string query = "select * from Category";
+            return base.GetAllAsync(query);
         }
 
-        public async void CreateCategoryAsync(CreateCategoryDto category)
+        public void CreateAsync(CreateCategoryDto dto)
         {
-            string query = "insert into Category (CategoryName,CategoryStatus) values (@CategoryName,@CategoryStatus)";
-            var parameters = new DynamicParameters();
-            parameters.Add("@CategoryName", category.CategoryName);
-            parameters.Add("@CategoryStatus", true);
-            using (var connection = context.CreateConnection())
-            {
-                await connection.ExecuteAsync(query, parameters);
-            }
+            const string query = "insert into Category (CategoryName) values (@CategoryName)";
+            ExecuteAsync(query, dto);
         }
 
-        public async void DeleteCategoryAsync(int id)
+        public void DeleteAsync(int id)
         {
-            string query = "delete from Category where CategoryId = @CategoryId";
-            var parameters = new DynamicParameters();
-            parameters.Add("@CategoryId", id);
-            using (var connection = context.CreateConnection())
-            {
-                await connection.ExecuteAsync(query, parameters);
-            }
+            const string query = "delete from Category where CategoryId = @id";
+            ExecuteAsync(query, new { id });
         }
 
-        public async void UpdateCategoryAsync(UpdateCategoryDto category)
+        public void UpdateAsync(UpdateCategoryDto dto)
         {
-            string query = "update Category set CategoryName = @CategoryName, CategoryStatus=@CategoryStatus where CategoryId = @CategoryId";
-            var parameters = new DynamicParameters();
-            parameters.Add("@CategoryId", category.CategoryId);
-            parameters.Add("@CategoryName", category.CategoryName);
-            parameters.Add("@CategoryStatus", category.CategoryStatus);
-            using (var connection = context.CreateConnection())
-            {
-                await connection.ExecuteAsync(query, category);
-            }
+            const string query =
+                "update Category set CategoryName = @CategoryName, CategoryStatus=@CategoryStatus where CategoryId = @CategoryId";
+            ExecuteAsync(query, dto);
         }
 
-        public async Task<ResultCategoryDto> GetCategoryByIdAsync(int id)
+        public Task<ResultCategoryDto> GetByIdAsync(int id)
         {
-            string query = "select * from Category where CategoryId = @CategoryId";
-            var parameters = new DynamicParameters();
-            parameters.Add("@CategoryId", id);
-            using (var connection = context.CreateConnection())
-            {
-                var value = await connection.QueryFirstOrDefaultAsync<ResultCategoryDto>(query, parameters);
-                return value;
-            }
+            const string query = "select * from Category where CategoryId = @id";
+            return GetAsync(query, new { id });
         }
     }
 }

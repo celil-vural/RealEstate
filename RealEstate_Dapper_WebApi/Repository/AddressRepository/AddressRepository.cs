@@ -1,47 +1,43 @@
-using Dapper;
 using Entity.Dtos.AddressDtos;
 using RealEstate_Dapper_WebApi.Model.DapperContext;
 
 namespace RealEstate_Dapper_WebApi.Repository.AddressRepository;
 
-public class AddressRepository(DapperContext context) : IAddressRepository
+public class AddressRepository(DapperContext context) : BaseRepository<ResultAddressDto>(context), IAddressRepository
 {
-    public async Task<ICollection<ResultAddressDto>> GetAllAddressAsync()
+    public Task<ICollection<ResultAddressDto>> GetAllAsync()
     {
-        var query = @"SELECT * FROM Address";
-        using var connection = context.CreateConnection();
-        var result = await connection.QueryAsync<ResultAddressDto>(query);
-        return result.ToHashSet();
+        const string query = "SELECT * FROM Address";
+        return base.GetAllAsync(query);
     }
 
-    public async void CreateAddressAsync(CreateAddressDto dto)
+    public void CreateAsync(CreateAddressDto dto)
     {
-        var query = @"INSERT INTO Address (AddressTitle, Address)
-VALUES (@AddressTitle, @Address)";
-        using var connection = context.CreateConnection();
-        await connection.ExecuteAsync(query, dto);
+        const string query = """
+                             INSERT INTO Address (AddressTitle, Address)
+                             VALUES (@AddressTitle, @Address)
+                             """;
+        ExecuteAsync(query, dto);
     }
 
-    public void DeleteAddressAsync(int id)
+    public void DeleteAsync(int id)
     {
-        var query = @"DELETE FROM Address WHERE AddressId = @Id";
-        using var connection = context.CreateConnection();
-        connection.ExecuteAsync(query, new { Id = id });
+        const string query = "DELETE FROM Address WHERE AddressId = @Id";
+        ExecuteAsync(query, new { Id = id });
     }
 
-    public async void UpdateAddressAsync(UpdateAddressDto dto)
+    public void UpdateAsync(UpdateAddressDto dto)
     {
-        var query = @"UPDATE Address SET AddressTitle = @AddressTitle, Address = @Address,
-                   Status=@Status WHERE AddressId = @Id";
-        using var connection = context.CreateConnection();
-        await connection.ExecuteAsync(query, dto);
+        const string query = """
+                             UPDATE Address SET AddressTitle = @AddressTitle, Address = @Address,
+                                                Status=@Status WHERE AddressId = @Id
+                             """;
+        ExecuteAsync(query, dto);
     }
 
-    public async Task<ResultAddressDto> GetAddressByIdAsync(int id)
+    public Task<ResultAddressDto> GetByIdAsync(int id)
     {
-        var query = @"SELECT * FROM Address WHERE AddressId  = @Id";
-        using var connection = context.CreateConnection();
-        var result = await connection.QueryFirstOrDefaultAsync<ResultAddressDto>(query, new { Id = id });
-        return result;
+        const string query = "SELECT * FROM Address WHERE AddressId = @id";
+        return GetAsync(query, new { id });
     }
 }

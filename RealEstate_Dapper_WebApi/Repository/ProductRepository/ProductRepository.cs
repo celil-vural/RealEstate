@@ -1,92 +1,71 @@
-﻿using Dapper;
-using Entity.Dtos.ProductDtos;
+﻿using Entity.Dtos.ProductDtos;
 using RealEstate_Dapper_WebApi.Model.DapperContext;
 
 namespace RealEstate_Dapper_WebApi.Repository.ProductRepository
 {
-    public class ProductRepository(DapperContext context) : IProductRepository
+    public class ProductRepository(DapperContext context)
+        : BaseRepository<ResultProductDto>(context), IProductRepository
     {
-        public async Task<ICollection<ResultProductDto>> GetAllProductAsync()
+        public Task<ICollection<ResultProductDto>> GetAllAsync()
         {
-            string query = "select * from Product";
-            using (var connection = context.CreateConnection())
-            {
-                var values =
-                    await connection.QueryAsync<ResultProductDto>(query);
-                return values.ToHashSet();
-            }
+            const string query = "select * from Product";
+            return base.GetAllAsync(query);
         }
 
-        public async Task<ICollection<ResultProductWithDetailsDto>> GetAllProductWithDetailsAsync()
+        public Task<ICollection<ResultProductWithDetailsDto>> GetAllProductWithDetailsAsync()
         {
-            string query = @"select ProductID,Title,Price,CoverImage,City,District,Address,
-       Description,CategoryName=c.CategoryName,EmployeeID,ProductShowCaseTypeName=sct.ProductShowCaseTypeName,
-       ProductStatus from Product p inner join Category c on p.ProductCategory = c.CategoryID
-       inner join ProductShowCaseType sct on p.ProductShowCaseTypeID = sct.ProductShowCaseTypeID";
-            using (var connection = context.CreateConnection())
-            {
-                var values =
-                    await connection.QueryAsync<ResultProductWithDetailsDto>(query);
-                return values.ToHashSet();
-            }
+            const string query = """
+                                 select ProductID,Title,Price,CoverImage,City,District,Address,
+                                        Description,CategoryName=c.CategoryName,EmployeeID,ProductShowCaseTypeName=sct.ProductShowCaseTypeName,
+                                        ProductStatus from Product p inner join Category c on p.ProductCategory = c.CategoryID
+                                        inner join ProductShowCaseType sct on p.ProductShowCaseTypeID = sct.ProductShowCaseTypeID
+                                 """;
+            return base.GetAllAsync<ResultProductWithDetailsDto>(query);
         }
 
-        public async Task<ResultProductWithDetailsDto> GetProductWithDetailsByIdAsync(int id)
+        public Task<ResultProductWithDetailsDto> GetProductWithDetailsByIdAsync(int id)
         {
-            string query = @"select ProductID,Title,Price,CoverImage,City,District,Address,
-       Description,CategoryName=c.CategoryName,EmployeeID,ProductShowCaseTypeName=sct.ProductShowCaseTypeName,
-       ProductStatus from Product p inner join Category c on p.ProductCategory = c.CategoryID
-       inner join ProductShowCaseType sct on p.ProductShowCaseTypeID = sct.ProductShowCaseTypeID
-                     where ProductID = @id";
-            using (var connection = context.CreateConnection())
-            {
-                var values =
-                    await connection.QueryFirstOrDefaultAsync<ResultProductWithDetailsDto>(query, new { id });
-                return values;
-            }
+            const string query = """
+                                 select ProductID,Title,Price,CoverImage,City,District,Address,
+                                        Description,CategoryName=c.CategoryName,EmployeeID,ProductShowCaseTypeName=sct.ProductShowCaseTypeName,
+                                        ProductStatus from Product p inner join Category c on p.ProductCategory = c.CategoryID
+                                        inner join ProductShowCaseType sct on p.ProductShowCaseTypeID = sct.ProductShowCaseTypeID
+                                                      where ProductID = @id
+                                 """;
+            return GetAsync<ResultProductWithDetailsDto>(query, new { id });
         }
 
-        public async Task<ResultProductDto> GetProductByIdAsync(int id)
+        public Task<ResultProductDto> GetByIdAsync(int id)
         {
-            string query = "select * from Product where ProductID = @id";
-            using (var connection = context.CreateConnection())
-            {
-                var values =
-                    await connection.QueryFirstOrDefaultAsync<ResultProductDto>(query, new { id });
-                return values;
-            }
+            const string query = "select * from Product where ProductID = @id";
+            return GetAsync(query, new { id });
         }
 
-        public void CreateProductAsync(CreateProductDto createProductDto)
+        public void CreateAsync(CreateProductDto dto)
         {
-            string query = @"insert into Product (Title,Price,CoverImage,City,District,Address,
-                     Description,ProductCategory,EmployeeID,ProductShowCaseTypeID,ProductStatus) values 
-                    (@Title,@Price,@CoverImage,@City,@District,@Address,@Description,@ProductCategory,@EmployeeID,
-                     @ProductShowCaseTypeID,1)";
-            using (var connection = context.CreateConnection())
-            {
-                connection.Execute(query, createProductDto);
-            }
+            const string query = """
+                                 insert into Product (Title,Price,CoverImage,City,District,Address,
+                                                      Description,ProductCategory,EmployeeID,ProductShowCaseTypeID,ProductStatus) values
+                                                     (@Title,@Price,@CoverImage,@City,@District,@Address,@Description,@ProductCategory,@EmployeeID,
+                                                      @ProductShowCaseTypeID,1)
+                                 """;
+            ExecuteAsync(query, dto);
         }
 
-        public void UpdateProductAsync(UpdateProductDto updateProductDto)
+        public void UpdateAsync(UpdateProductDto dto)
         {
-            string query = @"update Product set Title=@Title,Price=@Price,CoverImage=@CoverImage,City=@City,
-District=@District,Address=@Address,Description=@Description,ProductCategory=@ProductCategory,EmployeeID=@EmployeeID,
-ProductShowCaseTypeID=@ProductShowCaseTypeID where ProductID = @ProductID";
-            using (var connection = context.CreateConnection())
-            {
-                connection.Execute(query, updateProductDto);
-            }
+            const string query = """
+                                 update Product set Title=@Title,Price=@Price,CoverImage=@CoverImage,City=@City,
+                                 District=@District,Address=@Address,Description=@Description,ProductCategory=@ProductCategory,EmployeeID=@EmployeeID,
+                                 ProductShowCaseTypeID=@ProductShowCaseTypeID where ProductID = @ProductID
+                                 """;
+            ExecuteAsync(query, dto);
         }
 
-        public void DeleteProductAsync(int id)
+        public async void DeleteAsync(int id)
         {
-            string query = "delete from Product where ProductID = @id";
-            using (var connection = context.CreateConnection())
-            {
-                connection.Execute(query, new { id });
-            }
+            const string query = "delete from Product where ProductID = @id";
+            await ExecuteAsync(query, new { id });
         }
     }
 }

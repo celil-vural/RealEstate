@@ -1,45 +1,38 @@
-﻿using Dapper;
-using Entity.Dtos.ServicesDtos;
+﻿using Entity.Dtos.ServicesDtos;
 using RealEstate_Dapper_WebApi.Model.DapperContext;
 
 namespace RealEstate_Dapper_WebApi.Repository.ServicesRepository;
 
-public class ServicesRepository(DapperContext context):IServicesRepository
+public class ServicesRepository(DapperContext context) : BaseRepository<ResultServicesDto>(context), IServicesRepository
 {
-    public async Task<ICollection<ResultServicesDto>> GetAllServices()
+    public Task<ICollection<ResultServicesDto>> GetAllAsync()
     {
-        var query = "SELECT * FROM Services";
-        using var connection = context.CreateConnection();
-        var result = await connection.QueryAsync<ResultServicesDto>(query);
-        return result.ToList();
+        const string query = "SELECT * FROM Services";
+        return base.GetAllAsync(query);
     }
 
-    public async Task<ResultServicesDto> GetServiceByIdAsync(int id)
+    public Task<ResultServicesDto> GetByIdAsync(int id)
     {
-        var query = "SELECT * FROM Services WHERE ServiceID = @id";
-        using var connection = context.CreateConnection();
-        var result = await connection.QueryFirstOrDefaultAsync<ResultServicesDto>(query, new {id});
-        return result;
+        const string query = "SELECT * FROM Services WHERE ServiceID = @id";
+        return GetAsync(query, new { id });
     }
 
-    public async void UpdateServiceAsync(UpdateServiceDto dto)
+    public async void UpdateAsync(UpdateServiceDto dto)
     {
-        var query = "UPDATE Services SET ServiceName = @ServiceName,ServiceStatus = @ServiceStatus WHERE ServiceID = @ServiceID";
-        using var connection = context.CreateConnection();
-        await connection.ExecuteAsync(query, dto);
+        const string query =
+            "UPDATE Services SET ServiceName = @ServiceName,ServiceStatus = @ServiceStatus WHERE ServiceID = @ServiceID";
+        ExecuteAsync(query, dto);
     }
 
-    public async void CreateServiceAsync(CreateServiceDto dto)
+    public void CreateAsync(CreateServiceDto dto)
     {
-        var query = "INSERT INTO Services (ServiceName,ServiceStatus) VALUES (@ServiceName,@ServiceStatus)";
-        using var connection = context.CreateConnection();
-        await connection.ExecuteAsync(query, dto);
+        const string query = "INSERT INTO Services (ServiceName) VALUES (@ServiceName)";
+        ExecuteAsync(query, dto);
     }
 
-    public async void DeleteServiceAsync(int id)
+    public async void DeleteAsync(int id)
     {
-        var query = "DELETE FROM Services WHERE ServiceID = @id";
-        using var connection = context.CreateConnection();
-        await connection.ExecuteAsync(query, new { id });
+        const string query = "DELETE FROM Services WHERE ServiceID = @id";
+        await ExecuteAsync(query, new { id });
     }
 }

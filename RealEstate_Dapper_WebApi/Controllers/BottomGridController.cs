@@ -11,31 +11,33 @@ public class BottomGridController(IBottomGridRepository repository): ControllerB
     [HttpGet]
     public async Task<IActionResult> Index()
     {
-        var result = await repository.GetAllBottomGridDetail();
+        var result = await repository.GetAllAsync();
         return Ok(result);
     }
-    [HttpGet("{id}")]
+
+    [HttpGet("{id:int}")]
     public async Task<IActionResult> GetBottomGridDetailById([FromRoute]int id)
     {
-        var result = await repository.GetBottomGridDetailByIdAsync(id);
+        var result = await repository.GetByIdAsync(id);
         return Ok(result);
     }
     [HttpPost]
     public async Task<IActionResult> CreateBottomGridDetail([FromBody]CreateBottomGridDto createBottomGridDto)
     {
-        repository.CreateBottomGridDetailAsync(createBottomGridDto);
+        repository.CreateAsync(createBottomGridDto);
         return Ok();
     }
     [HttpPut]
     public async Task<IActionResult> UpdateBottomGridDetail([FromBody]UpdateBottomGridDto updateBottomGridDto)
     {
-        repository.UpdateBottomGridDetailAsync(updateBottomGridDto);
+        repository.UpdateAsync(updateBottomGridDto);
         return Ok();
     }
-    [HttpDelete("{id}")]
+
+    [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeleteBottomGridDetail([FromRoute]int id)
     {
-        repository.DeleteBottomGridDetailAsync(id);
+        repository.DeleteAsync(id);
         return Ok();
     }
 }

@@ -1,45 +1,39 @@
-﻿using Dapper;
-using Entity.Dtos.PopularLocationDtos;
+﻿using Entity.Dtos.PopularLocationDtos;
 using RealEstate_Dapper_WebApi.Model.DapperContext;
 
 namespace RealEstate_Dapper_WebApi.Repository.PopularLocationRepository;
 
-public class PopularLocationRepository(DapperContext context):IPopularLocationRepository
+public class PopularLocationRepository(DapperContext context)
+    : BaseRepository<ResultPopularLocationDto>(context), IPopularLocationRepository
 {
-    public async Task<ICollection<ResultPopularLocationDto>> GetAllPopularLocationDetailAsync()
+    public Task<ICollection<ResultPopularLocationDto>> GetAllAsync()
     {
-        string query = @"SELECT * FROM PopularLocation";
-        using var connection = context.CreateConnection();
-        var result = await connection.QueryAsync<ResultPopularLocationDto>(query);
-        return result.ToHashSet();
+        const string query = "SELECT * FROM PopularLocation";
+        return base.GetAllAsync(query);
     }
 
-    public async Task<ResultPopularLocationDto> GetPopularLocationDetailByIdAsync(int id)
+    public Task<ResultPopularLocationDto> GetByIdAsync(int id)
     {
-        string query = @"SELECT * FROM PopularLocation WHERE LocationId = @Id";
-        using var connection = context.CreateConnection();
-        var result = await connection.QueryFirstOrDefaultAsync<ResultPopularLocationDto>(query, new { Id = id });
-        return result;
+        const string query = "SELECT * FROM PopularLocation WHERE LocationId = @Id";
+        return GetAsync(query);
     }
 
-    public void CreatePopularLocationDetailAsync(CreatePopularLocationDto dto)
+    public void CreateAsync(CreatePopularLocationDto dto)
     {
-        string query = @"INSERT INTO PopularLocation (CityName,ImageUrl) VALUES (@CityName,@ImageUrl)";
-        using var connection = context.CreateConnection();
-        connection.ExecuteAsync(query, dto);
+        const string query = "INSERT INTO PopularLocation (CityName,ImageUrl) VALUES (@CityName,@ImageUrl)";
+        ExecuteAsync(query, dto);
     }
 
-    public async void UpdatePopularLocationDetailAsync(UpdatePopularLocationDto dto)
+    public void UpdateAsync(UpdatePopularLocationDto dto)
     {
-        string query = @"UPDATE PopularLocation SET CityName = @CityName, ImageUrl = @ImageUrl WHERE LocationId = @LocationId";
-        using var connection = context.CreateConnection();
-        await connection.ExecuteAsync(query, dto);
+        const string query =
+            "UPDATE PopularLocation SET CityName = @CityName, ImageUrl = @ImageUrl WHERE LocationId = @LocationId";
+        ExecuteAsync(query, dto);
     }
 
-    public async void DeletePopularLocationDetailAsync(int id)
+    public async void DeleteAsync(int id)
     {
-        string query = @"DELETE FROM PopularLocation WHERE LocationId = @Id";
-        using var connection = context.CreateConnection();
-        await connection.ExecuteAsync(query, new { Id = id });
+        const string query = "DELETE FROM PopularLocation WHERE LocationId = @Id";
+        await ExecuteAsync(query, new { Id = id });
     }
 }

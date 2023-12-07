@@ -10,31 +10,33 @@ public class PopularLocationController(IPopularLocationRepository repository):Co
     [HttpGet]
     public async Task<IActionResult> GetPopularLocations()
     {
-        var popularLocations = await repository.GetAllPopularLocationDetailAsync();
+        var popularLocations = await repository.GetAllAsync();
         return Ok(popularLocations);
     }
-    [HttpGet("{id}")]
+
+    [HttpGet("{id:int}")]
     public async Task<IActionResult> GetPopularLocationById([FromRoute] int id)
     {
-        var popularLocation = await repository.GetPopularLocationDetailByIdAsync(id);
+        var popularLocation = await repository.GetByIdAsync(id);
         return Ok(popularLocation);
     }
     [HttpPost]
     public async Task<IActionResult> CreatePopularLocation([FromBody] CreatePopularLocationDto createPopularLocationDto)
     {
-        repository.CreatePopularLocationDetailAsync(createPopularLocationDto);
+        repository.CreateAsync(createPopularLocationDto);
         return Ok();
     }
     [HttpPut]
     public async Task<IActionResult> UpdatePopularLocation([FromBody] UpdatePopularLocationDto updatePopularLocationDto)
     {
-        repository.UpdatePopularLocationDetailAsync(updatePopularLocationDto);
+        repository.UpdateAsync(updatePopularLocationDto);
         return Ok();
     }
-    [HttpDelete("{id}")]
+
+    [HttpDelete("{id:int}")]
     public async Task<IActionResult> DeletePopularLocation([FromRoute] int id)
     {
-        repository.DeletePopularLocationDetailAsync(id);
+        repository.DeleteAsync(id);
         return Ok();
     }
 }
