@@ -1,6 +1,7 @@
 @model ICollection<ResultEmployeeDto>
 @{
     Layout = "~/Views/Admin/Index.cshtml";
+    var count = 0;
 }
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
@@ -23,8 +24,9 @@
                         <tbody>
                         @foreach (var item in Model ?? new List<ResultEmployeeDto>())
                         {
+                            count++;
                             <tr>
-                                <th scope="row">@item.EmployeeID</th>
+                                <th scope="row">@count</th>
                                 <td>@item.Name @item.Surname</td>
                                 <td>@item.Email</td>
                                 <td>@item.Phone</td>
@@ -32,11 +34,11 @@
                                     @{
                                         if (item.Status)
                                         {
-                                            <span>"Aktif"</span>
+                                            <span>Aktif</span>
                                         }
                                         else
                                         {
-                                            <span>"Pasif"</span>
+                                            <span>Pasif</span>
                                         }
                                     }
                                 </td>
