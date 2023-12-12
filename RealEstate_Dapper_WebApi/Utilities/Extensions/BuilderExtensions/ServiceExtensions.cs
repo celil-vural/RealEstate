@@ -10,6 +10,7 @@ using Repository.Repositories.ProductRepository;
 using Repository.Repositories.ProductShowCaseTypeRepository;
 using Repository.Repositories.Repository.AddressRepository;
 using Repository.Repositories.ServicesRepository;
+using Repository.Repositories.StatisticsRepository;
 using Repository.Repositories.TestimonialRepository;
 using Repository.Repositories.TestimonialRepsitory;
 using Repository.Repositories.WhoWeAreRepository;
@@ -29,17 +30,18 @@ public static class ServiceExtensions
     public static void ConfigureIoC(this IServiceCollection services)
     {
         services.AddTransient<DapperContext>();
-        services.AddTransient<ICategoryRepository, CategoryRepository>();
-        services.AddTransient<IProductRepository, ProductRepository>();
-        services.AddTransient<IWhoWeAreDetailRepository, WhoWeAreDetailRepository>();
-        services.AddTransient<IServicesRepository, ServicesRepository>();
-        services.AddTransient<IBottomGridRepository, BottomGridRepository>();
-        services.AddTransient<IPopularLocationRepository, PopularLocationRepository>();
-        services.AddTransient<ITestimonialRepository, TestimonialRepository>();
-        services.AddTransient<IContactRepository, ContactRepository>();
-        services.AddTransient<IAddressRepository, AddressRepository>();
-        services.AddTransient<IContactAddressRepository, ContactAddressRepository>();
-        services.AddTransient<IEmployeeRepository, EmployeeRepository>();
-        services.AddTransient<IProductShowCaseTypeRepository, ProductShowCaseTypeRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IWhoWeAreDetailRepository, WhoWeAreDetailRepository>();
+        services.AddScoped<IServicesRepository, ServicesRepository>();
+        services.AddScoped<IBottomGridRepository, BottomGridRepository>();
+        services.AddScoped<IPopularLocationRepository, PopularLocationRepository>();
+        services.AddScoped<ITestimonialRepository, TestimonialRepository>();
+        services.AddScoped<IContactRepository, ContactRepository>();
+        services.AddScoped<IAddressRepository, AddressRepository>();
+        services.AddScoped<IContactAddressRepository, ContactAddressRepository>();
+        services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+        services.AddScoped<IProductShowCaseTypeRepository, ProductShowCaseTypeRepository>();
+        services.AddScoped<IStatisticsRepository, StatisticsRepository>();
     }
 }
